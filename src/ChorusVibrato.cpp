@@ -32,9 +32,11 @@ using namespace Aviate;
 
 namespace Tillotson_ChorusVibrato {
 
-using byte = uint8_t;
 
+//#define AUDIOSTREAM_FLOAT
 #define OVERSAMPLING_RATE 2
+
+using byte = uint8_t;
 
 ChorusVibrato::ChorusVibrato()
 : AudioStream(NUM_INPUTS, m_inputQueueArray),
@@ -76,7 +78,14 @@ void ChorusVibrato::init()
 void ChorusVibrato::update(void)
 {
     if (!m_initComplete) { init(); }
-    audio_block_t *inputAudioBlock = receiveWritable(); // get the next block of input samples
+
+// #ifdef AUDIOSTREAM_FLOAT
+//     audio_block_float32_t *inputAudioBlock = receiveWritableFloat(); // get the next block of input samples
+// #else
+//     audio_block_t *inputAudioBlock = receiveWritable(); // get the next block of input samples
+// #endif
+    AudioBlock* inputAudioBlock = audioBlockReceiveWritable();
+
     inputAudioBlock = m_basicInputCheck(inputAudioBlock, 0); // check for disable mode, bypass, or invalid inputs. Transmit to channel 0 in bypass
     if (!inputAudioBlock) { return; } // no further processing for this update() call
 
@@ -86,7 +95,6 @@ void ChorusVibrato::update(void)
     // DO AUDIO EFFECT PROCESSING
     for (unsigned i=0; i<AUDIO_SAMPLES_PER_BLOCK; i++) {
         float s = inputAudioBlock->data[i] ;
-
         simulate_lineunit (butterworth (2*s)) ;  // interpolate to 88200 SPS, pass to circuit simulator
         simulate_lineunit (butterworth (0)) ;
 
@@ -95,7 +103,7 @@ void ChorusVibrato::update(void)
                         + crossfade [SAMPS_PER_SEG - scanner_ph] * out[tap] ;
         float mixed = m_mix*interpolated + (1.0f - m_mix)*s;
 
-        inputAudioBlock->data[i] = (int16_t)(mixed * m_volume);
+        inputAudioBlock->data[i] = (float)(mixed * m_volume);
 
         scanner_ph += 1 ;  // update the scanner segment state
         if (scanner_ph >= SAMPS_PER_SEG)

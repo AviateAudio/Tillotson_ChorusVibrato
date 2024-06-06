@@ -19,6 +19,13 @@ namespace Tillotson_ChorusVibrato {
 //!s - START_USER_EFFECT_TYPES - put your effect types below this line before the matching END
 //!e - END_USER_EFFECT_TYPES
 
+#define AUDIOSTREAM_INT16
+using AudioBlock    = audio_block_t;
+using AudioDataType = int16_t;
+#define audioBlockReceiveReadOnly receiveReadOnly
+#define audioBlockReceiveWritable receiveWritable
+#define audioBlockAllocate        allocate
+
 class ChorusVibrato : public AudioStream, public Aviate::AudioEffectWrapper {
 public:
     static constexpr unsigned NUM_INPUTS  = 1;

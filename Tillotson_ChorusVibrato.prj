@@ -1,8 +1,8 @@
 {
-  "efxFileVersion": "1.4.0",
+  "efxFileVersion": "1.5.0",
   "company": "Tillotson",
   "effectName": "Hammond Chorus Vibrato",
-  "effectVersion": "0.2.0",
+  "effectVersion": "0.3.0",
   "coreVersion": "1.5.0",
   "effectShortName": "ChrVib",
   "effectCategory": "Modulation",
@@ -17,7 +17,6 @@
   "constructorParams": "",
   "isSingleton": false,
   "audioStreamType": 0,
-  "type": 1,
   "controls": [
     {
       "name": "Bypass",
