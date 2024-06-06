@@ -1,0 +1,161 @@
+{
+  "efxFileVersion": "1.4.0",
+  "company": "Tillotson",
+  "effectName": "Hammond Chorus Vibrato",
+  "effectVersion": "0.2.0",
+  "coreVersion": "1.5.0",
+  "effectShortName": "ChrVib",
+  "effectCategory": "Modulation",
+  "effectDescription": "A circuit simulation of the Hammond Scanner Vibrato. Effect by Mark Tillotson.",
+  "numInputs": 1,
+  "numOutputs": 1,
+  "numControls": 6,
+  "effectFilename": "Tillotson_ChorusVibrato.efx",
+  "libraryName": "Tillotson_ChorusVibrato",
+  "cppClass": "Tillotson_ChorusVibrato::ChorusVibrato",
+  "cppInstBase": "_Tillotson_ChorusVibrato",
+  "constructorParams": "",
+  "isSingleton": false,
+  "audioStreamType": 0,
+  "type": 1,
+  "controls": [
+    {
+      "name": "Bypass",
+      "shortName": "BYP",
+      "description": "Bypasses the effect when enabled",
+      "config": [
+        0,
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "iconOn": "gfx/StompUp.png",
+      "iconOnHeight": 128,
+      "iconOff": "gfx/StompDown.png",
+      "iconOffHeight": 128,
+      "position": [
+        199,
+        500
+      ],
+      "scalingRatio": 0.699999988079071,
+      "userData": 1
+    },
+    {
+      "name": "Volume",
+      "shortName": "VOL",
+      "description": "Sets the effect output volume from -40dB to +10dB",
+      "config": [
+        3,
+        0.0,
+        10.0,
+        8.0,
+        0.1000000014901161
+      ],
+      "userData": 0
+    },
+    {
+      "name": "Mode",
+      "shortName": "MODE",
+      "description": "Sets the mode to either vibrato or chorus.",
+      "config": [
+        2,
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "iconEncoder": "gfx/Wood_GearSelect2.png",
+      "iconEncoderHeight": 192,
+      "enums": [
+        "Chorus",
+        "Vibrato"
+      ],
+      "position": [
+        122,
+        368
+      ],
+      "scalingRatio": 0.699999988079071,
+      "supressValueLabel": 1,
+      "userData": 0
+    },
+    {
+      "name": "Depth",
+      "shortName": "DEPTH",
+      "description": "Sets the depth ofmodulation to either 1, 2 or 3.",
+      "config": [
+        2,
+        1.0,
+        3.0,
+        1.0,
+        1.0
+      ],
+      "iconEncoder": "gfx/Wood_GearSelect3.png",
+      "iconEncoderHeight": 192,
+      "position": [
+        276,
+        368
+      ],
+      "scalingRatio": 0.699999988079071,
+      "supressValueLabel": 1,
+      "userData": 0
+    },
+    {
+      "name": "Mix",
+      "shortName": "MIX",
+      "description": "Controls the mix from totally dry (0) to completely wet (10).",
+      "config": [
+        3,
+        0.0,
+        10.0,
+        10.0,
+        1.0
+      ],
+      "userData": 0
+    },
+    {
+      "name": "LED",
+      "shortName": "LED",
+      "description": "Status LED. On when the effect is engaged (not bypassed).",
+      "config": [
+        6,
+        0.0,
+        1.0,
+        0.0,
+        1.0
+      ],
+      "iconOn": "gfx/LED_RedOn.png",
+      "iconOnHeight": 128,
+      "iconOff": "gfx/LED_RedOff.png",
+      "iconOffHeight": 128,
+      "position": [
+        200,
+        55
+      ],
+      "scalingRatio": 0.550000011920929,
+      "supressValueLabel": 1,
+      "userData": 0
+    }
+  ],
+  "projectFileVersion": "1.0.0",
+  "companyLogo": "gfx/TillotsonLogo.png",
+  "pedalIcon": "gfx/ChorusVibrato_icon.png",
+  "basePedal": "gfx/ChorusVibrato_base.png",
+  "publicHeaderFiles": [
+    "inc/ChorusVibrato.h"
+  ],
+  "privateSourceFiles": [
+    "src/ChorusVibratoBase.cpp",
+    "src/ChorusVibrato.cpp"
+  ],
+  "modules": null,
+  "settings": {
+    "showModules": false,
+    "isSingleton": false,
+    "cppDefines": "",
+    "noWarnings": "",
+    "enableFastMath": true,
+    "enableO3": true,
+    "audioStreamType": 0
+  }
+}
